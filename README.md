@@ -1,1 +1,1 @@
-# Acelerometer Control with Python
+# Accelerometer based Control with MICROChip and Python
