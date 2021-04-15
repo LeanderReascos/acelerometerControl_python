@@ -164,14 +164,14 @@ TIMER0_INT:
     BANKSEL	PIR0
     BCF		PIR0	,5	; Limpar flag de interrupt do TIMER0
     BANKSEL	ADCON0
-    BSF		ADCON0	,0	; ComeÁar nova convers„o do ADC   
+    BSF		ADCON0	,0	; Come√ßar nova convers√£o do ADC   
     BTG		LATA, 6		; "Piscar" LED.
     RETFIE
 
 ADC_Finish_Interrupt:
     MOVLW	0b01000000
     MULWF	AXIS		; Shift Left 6 casas
-    MOVFF	PRODL, AUX	; Mover AXIS para vari·vel auxiliar
+    MOVFF	PRODL, AUX	; Mover AXIS para vari√°vel auxiliar
     
     call	CHAR_DATA_MSB
     call	CHAR_DATA_LSB
@@ -247,10 +247,10 @@ CHAR_DATA_LSB:
     return
     
 
-BUTTON_0:			; Ligar/Desligar comunicaÁ„o
+BUTTON_0:			; Ligar/Desligar comunica√ß√£o
     BANKSEL	LATA
     BSF		LATA    ,6
-    BTG		T0CON0	,7	; Toggle TIMER0 (Ligar/Desligar comunicaÁ„o)
+    BTG		T0CON0	,7	; Toggle TIMER0 (Ligar/Desligar comunica√ß√£o)
     MOVLW	0X20		; AXIS: 00, MSB: 1, DATA: 00000 - (Ligar + Calibrar) ou Desligar
     MOVWF	CHAR
     call	SENDCHAR
@@ -269,8 +269,8 @@ BUTTON_0:			; Ligar/Desligar comunicaÁ„o
 
 SENDCHAR:
     BANKSEL	PIR3
-    btfss	PIR3,   4	; Ver se TX Buffer est· disponÌvel (TXIF)
-    bra		SENDCHAR	; Se n„o, branch para tentar de novo
+    btfss	PIR3,   4	; Ver se TX Buffer est√° dispon√≠vel (TXIF)
+    bra		SENDCHAR	; Se n√£o, branch para tentar de novo
     BANKSEL	TX1REG
     movff	CHAR,   TX1REG	; Colocar CHAR no USART TX register para envio
     BANKSEL	LATA
