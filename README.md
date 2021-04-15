@@ -1,1 +1,1 @@
-# Acelerometer Controller with Python
+# Acelerometer Control with Python
